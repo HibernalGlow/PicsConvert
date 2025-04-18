@@ -1,8 +1,8 @@
 {
-  "37692": {
-    "thread_count": 1,
+  "59288": {
+    "thread_count": 2,
     "batch_size": 1,
-    "start_time": "2025-04-18T16:59:22.391276",
+    "start_time": "2025-04-18T23:39:13.999468",
     "paused": false
   }
 }
