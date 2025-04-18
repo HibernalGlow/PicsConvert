@@ -11,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 # 导入我们的img_convert模块
-from nodes.pics.convert.img_convert import ImageConverter
+from src.convert.img_convert import ImageConverter
 from nodes.record.logger_config import setup_logger
 from nodes.pics.filter.archive_image_analyzer import ArchiveImageAnalyzer
 

@@ -11,11 +11,11 @@ from functools import partial # 新增导入
 from regex import F
 import rich
 from nodes.file_ops.input_handler import InputHandler
-from nodes.pics.convert.format_convert import ArchiveConverter,SUPPORTED_ARCHIVE_FORMATS
+from src.convert.format_convert import ArchiveConverter,SUPPORTED_ARCHIVE_FORMATS
 from nodes.record.logger_config import setup_logger
-from nodes.pics.convert.performance_control import get_performance_params,start_config_gui_thread
+from src.convert.performance_control import get_performance_params,start_config_gui_thread
 # 导入黑名单文件路径
-from nodes.pics.convert.compression_tracker import BLACKLIST_FILE_PATH
+from src.convert.compression_tracker import BLACKLIST_FILE_PATH
 from nodes.monitor.monitor_decorator import infinite_monitor
 from nodes.tui.preset.textual_preset import create_config_app
 from nodes.tui.textual_logger import TextualLoggerManager

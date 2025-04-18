@@ -25,7 +25,7 @@ except ImportError:
 
 from nodes.record.logger_config import setup_logger
 # 导入压缩率跟踪器
-from nodes.pics.convert.compression_tracker import compression_tracker
+from src.convert.compression_tracker import compression_tracker
 
 # 获取logger实例
 # config = {
