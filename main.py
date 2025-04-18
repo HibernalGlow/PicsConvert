@@ -3,16 +3,13 @@ import sys
 import threading
 import argparse
 from pathlib import Path
-
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
 from typing import Dict, Any, List, Tuple, Set
 import time
 import json # 新增导入
 from functools import partial # 新增导入
 
-from regex import F
-import rich
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_dir)
 from nodes.file_ops.input_handler import InputHandler
 from src.convert.format_convert import ArchiveConverter,SUPPORTED_ARCHIVE_FORMATS
 from nodes.record.logger_config import setup_logger
