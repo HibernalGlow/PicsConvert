@@ -3,6 +3,9 @@ import sys
 import threading
 import argparse
 from pathlib import Path
+
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
 from typing import Dict, Any, List, Tuple, Set
 import time
 import json # 新增导入
