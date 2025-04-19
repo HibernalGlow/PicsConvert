@@ -340,13 +340,17 @@ def monitor_and_process(paths: List[str], **kwargs) -> None:
             else:
                 filtered_archive_paths.append(path)
     
+    # 在处理结果后对过滤后的列表进行排序
+    filtered_archive_paths.sort()
+    logger.info(f"[#file]已对过滤后的压缩包路径进行升序排序")
+
     skipped_total = skipped_by_name + skipped_by_content + skipped_by_keyword_blacklist + skipped_by_json_blacklist # 更新总数
     logger.info(f"[#status]预扫描完成，共跳过 {skipped_total} 个压缩包：")
     logger.info(f"[#status]- 通过文件名跳过：{skipped_by_name} 个")
     logger.info(f"[#status]- 通过内容检查跳过：{skipped_by_content} 个")
     logger.info(f"[#status]- 通过命令行黑名单路径跳过：{skipped_by_keyword_blacklist} 个")
     logger.info(f"[#status]- 通过JSON黑名单文件跳过：{skipped_by_json_blacklist} 个") # 新增日志
-    logger.info(f"[#status]剩余待处理：{len(filtered_archive_paths)} 个压缩包")
+    logger.info(f"[#status]剩余待处理（已排序）：{len(filtered_archive_paths)} 个压缩包") # 更新日志说明已排序
     
     # 根据模式处理过滤后的文件
     if filtered_archive_paths:
