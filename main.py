@@ -542,7 +542,7 @@ def main():
         app = create_config_app(
             program=__file__,
             parser=parser,
-            title="图片压缩配置",
+            title="PicsConvert",
             preset_configs=preset_configs,
             on_run=False,
             rich_mode=USE_RICH,
