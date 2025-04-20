@@ -364,9 +364,12 @@ class ImageConverter:
             # 记录压缩效果
             compression_ratio = self._calculate_compression_ratio(original_size, new_size)
             size_difference = original_size - new_size
+            original_size_kb = original_size / 1024
+            new_size_kb = new_size / 1024
+            size_difference_kb = size_difference / 1024
             # 添加转换结果日志
             if result['success']:
-                logger.info(f"[#image]转换成功: {result['output_path']},{original_size}-{new_size}={size_difference}, 压缩率: {compression_ratio:.1f}")
+                logger.info(f"[#image]转换成功: {result['output_path']}, {original_size_kb:.1f}KB -> {new_size_kb:.1f}KB, 节省: {size_difference_kb:.1f}KB, 压缩率: {compression_ratio:.1f}%")
             
         except Exception as e:
             logger.exception(f"处理图片时出错: {input_path}")

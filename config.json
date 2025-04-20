@@ -51,6 +51,16 @@
                 "blacklist": "02COS"
             }
         },
+        "jxl-skip-avif": {
+            "description": "JXL格式 80质量 仅跳过AVIF",
+            "checkbox_options": ["clipboard"],
+            "input_values": {
+                "format": "jxl",
+                "quality": "80",
+                "skip": ".avif",
+                "blacklist": ""
+            }
+        },        
         "JXL-lossless": {
             "description": "JXL格式 CJXL无损转换",
             "checkbox_options": ["clipboard", "lossless"],
