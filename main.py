@@ -30,6 +30,27 @@ config = {
 logger, config_info = setup_logger(config)
 USE_RICH = False  # 是否使用Rich库进行输出
 
+# --- 加载配置文件 ---
+CONFIG_FILE_PATH = Path(current_dir) / 'config.json'
+APP_CONFIG = {}
+LAYOUT_CONFIG = {} # 提供默认空配置以避免后续错误
+PRESET_CONFIGS = {}
+
+try:
+    with open(CONFIG_FILE_PATH, 'r', encoding='utf-8') as f:
+        APP_CONFIG = json.load(f)
+    LAYOUT_CONFIG = APP_CONFIG.get("layout", {})
+    PRESET_CONFIGS = APP_CONFIG.get("presets", {})
+    logger.info(f"[#file]成功加载配置文件: {CONFIG_FILE_PATH}")
+except FileNotFoundError:
+    logger.error(f"[#file]配置文件未找到: {CONFIG_FILE_PATH}")
+except json.JSONDecodeError:
+    logger.error(f"[#file]解析配置文件失败: {CONFIG_FILE_PATH}")
+except Exception as e:
+    logger.error(f"[#file]加载配置文件时发生未知错误: {e}")
+# --- 结束加载配置文件 ---
+
+
 # 定义需要跳过的格式列表
 SKIP_FORMATS: Set[str] = {
     '.avif', '.jxl', '.webp'  # 默认跳过这些格式
@@ -53,42 +74,12 @@ BLACKLIST_PATHS: Set[str] = {
 # 全局变量用于存储活跃的黑名单路径关键词，可通过命令行覆盖
 ACTIVE_BLACKLIST_PATHS: Set[str] = BLACKLIST_PATHS.copy()
 
-LAYOUT_CONFIG = {
-    "status": {
-        "ratio": 1,
-        "title": "🏭 总体进度",
-        "style": "lightblue"
-    },
-    "progress": {
-        "ratio": 1,
-        "title": "🔄 当前进度",
-        "style": "lightgreen"
-    },
-    "performance": {
-        "ratio": 1,
-        "title": "📹 性能监控",  # 更新标题
-        "style": "lightyellow"
-    },
-    "image": {
-        "ratio": 2,
-        "title": "🖼️ 图片转换",
-        "style": "lightsalmon"
-    },   
-    "archive": {
-        "ratio": 2,
-        "title": "📦 压缩包处理",
-        "style": "lightpink"
-    },
-    "file": {
-        "ratio": 2,
-        "title": "📂 文件操作",
-        "style": "lightcyan"
-    },
-
-}
-
 def init_layout():
-    TextualLoggerManager.set_layout(LAYOUT_CONFIG, config_info['log_file'])
+    # 使用从 JSON 加载的 LAYOUT_CONFIG
+    if LAYOUT_CONFIG:
+        TextualLoggerManager.set_layout(LAYOUT_CONFIG, config_info['log_file'])
+    else:
+        logger.warning("[#file]布局配置未加载，无法初始化 Textual 布局")
 
 
 def process_archive(*args, **kwargs) -> None:
@@ -466,55 +457,7 @@ def main():
     else:
         # 定义复选框选项
 
-        # 预设配置
-        preset_configs = {
-            "AVIF-80-inf": {
-                "description": "AVIF格式 90质量 无限模式",
-                "checkbox_options": ["infinite","clipboard",],
-                "input_values": {
-                    "format": "avif",
-                    "quality": "80",
-                    "interval": "10",
-                }
-            },
-            "AVIF-skip-jxl": {
-                "description": "AVIF格式 80质量 仅跳过JXL",
-                "checkbox_options": ["clipboard"],
-                "input_values": {
-                    "format": "avif",
-                    "quality": "80",
-                    "skip": ".jxl,.webp",
-                    "blacklist": "02COS",
-                }
-            },
-            "JXL-lossless": {  # 添加新的预设
-                "description": "JXL格式 CJXL无损转换",
-                "checkbox_options": ["clipboard","lossless"],  # 启用JPEG无损
-                "input_values": {
-                    "format": "jxl",
-                    "quality": "100",
-                    
-                }
-            },
-            "JXL-80": {
-                "description": "JXL格式 80质量",
-                "checkbox_options": ["clipboard"],
-                "input_values": {
-                    "format": "jxl",
-                    "quality": "80",
-                }
-            },
-            "AVIF-90-1800": {
-                "description": "AVIF格式 90质量 1800宽度过滤",
-                "checkbox_options": ["clipboard"],
-                "input_values": {
-                    "format": "avif",
-                    "quality": "80",
-                    "min_width": "1800"
-                }
-            },
-            # ...preset definitions...  # 其他预设配置相同，为简洁起见省略
-        }
+        # 预设配置 - 从 JSON 加载
 
         def on_run(params: dict):
             """TUI配置界面的回调函数"""
@@ -543,7 +486,7 @@ def main():
             program=__file__,
             parser=parser,
             title="PicsConvert",
-            preset_configs=preset_configs,
+            preset_configs=PRESET_CONFIGS, # 使用从 JSON 加载的 PRESET_CONFIGS
             on_run=False,
             rich_mode=USE_RICH,
             # if no_run else on_run,
