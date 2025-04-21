@@ -49,6 +49,7 @@ class ArchiveConverter:
         converter_config = {
             'target_format': self.config.get('target_format', 'avif'),
             'thread_count': self.config.get('thread_count', 4),
+            'enable_jxl_fallback': self.config.get('enable_jxl_fallback', False),
             f"{self.config.get('target_format', 'avif')}_config": {
                 'quality': self.config.get('quality', 90),
                 'lossless': self.config.get('lossless', False),

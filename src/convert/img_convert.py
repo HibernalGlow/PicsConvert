@@ -43,6 +43,7 @@ DEFAULT_CONVERSION_CONFIG = {
     'source_formats': {'.jpg', '.jpeg', '.png', '.webp', '.bmp', '.avif', '.jxl'},
     "thread_count": 1,
     'target_format': '.avif',
+    'enable_jxl_fallback': True,  # JXL无损回退开关
     'avif_config': {
         'quality': 90,
         'speed': 7,
@@ -85,8 +86,8 @@ class ImageConverter:
             config: 图片转换配置，可以是字典或JSON字符串
         """
         self.config = DEFAULT_CONVERSION_CONFIG.copy()
-        # 默认开启JXL无损回退
-        self.enable_jxl_fallback = True
+        # 从配置中读取JXL无损回退设置
+        self.enable_jxl_fallback = self.config['enable_jxl_fallback']
         if config:
             if isinstance(config, str):
                 try:
@@ -112,7 +113,7 @@ class ImageConverter:
         self._ratio_threshold = 4.2
         
         # 添加配置日志
-        logger.info(f"[#image]图片转换配置: 目标格式={self.config['target_format']}, 线程数={self.thread_count}")
+        logger.info(f"[#image]图片转换配置: 目标格式={self.config['target_format']}, 线程数={self.thread_count}, JXL无损回退={self.enable_jxl_fallback}")
 # 在ImageConverter类中添加新函数
 
     def _check_compression_ratio(self, original_size: int, new_size: int, result: Dict) -> bool:
@@ -514,7 +515,7 @@ class ImageConverter:
         """转换为JXL无损格式"""
         try:
             file_ext = os.path.splitext(input_path.lower())[1]
-            unable2jxl = [".avif",".webp"]
+            unable2jxl = [".avif",".webp",".jxl"]
             # 如果是AVIF格式，需要先转换为PNG作为中间格式
             if file_ext in unable2jxl:
                 logger.warning(f"{file_ext}格式不支持直接转换为JXL")

@@ -53,7 +53,7 @@
         },
         "jxl-skip-avif": {
             "description": "JXL格式 80质量 仅跳过AVIF",
-            "checkbox_options": ["clipboard"],
+            "checkbox_options": ["clipboard","jxlfall"],
             "input_values": {
                 "format": "jxl",
                 "quality": "70",

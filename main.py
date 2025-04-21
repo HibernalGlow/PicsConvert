@@ -145,6 +145,7 @@ def process_archive(*args, **kwargs) -> None:
     converter_params = {
         'thread_count': thread_count,
         'min_width': filter_params.get('min_width', -1),
+        'enable_jxl_fallback': kwargs.get('jxlfall', True),  # 启用JXL回退
         'target_format': kwargs.get('format', 'avif').lower(),    # 确保格式小写
         'quality': int(kwargs.get('quality', 90)),                # 确保质量是整数
         'lossless': kwargs.get('lossless', False)                 # 添加无损选项
@@ -449,6 +450,8 @@ def main():
     # 添加命令行参数用于覆盖黑名单路径关键词
     parser.add_argument('--blacklist', '-b', type=str, 
                     help='覆盖黑名单路径关键词，格式为逗号分隔的关键词列表，例如：backup,temp,downloads；设置为空字符串可禁用黑名单')
+    parser.add_argument('--jxlfall', '-jf', action='store_true', 
+                    help='启用JXL格式的降级处理')
     
     # 使用命令行参数或TUI配置界面
     if len(sys.argv) > 1:
