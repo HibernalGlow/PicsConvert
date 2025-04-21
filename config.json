@@ -56,8 +56,8 @@
             "checkbox_options": ["clipboard"],
             "input_values": {
                 "format": "jxl",
-                "quality": "80",
-                "skip": ".avif",
+                "quality": "70",
+                "skip": ".avif,.webp",
                 "blacklist": ""
             }
         },        
@@ -69,16 +69,16 @@
                 "quality": "100"
             }
         },
-        "JXL-80": {
-            "description": "JXL格式 80质量",
+        "JXL-70": {
+            "description": "JXL格式 70质量",
             "checkbox_options": ["clipboard"],
             "input_values": {
                 "format": "jxl",
-                "quality": "80"
+                "quality": "70"
             }
         },
-        "AVIF-90-1800": {
-            "description": "AVIF格式 90质量 1800宽度过滤",
+        "AVIF-80-1800": {
+            "description": "AVIF格式 80质量 1800宽度过滤",
             "checkbox_options": ["clipboard"],
             "input_values": {
                 "format": "avif",
