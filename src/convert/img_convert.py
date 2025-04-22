@@ -41,6 +41,7 @@ EXCLUDED_IMAGE_FORMATS = {'.gif', '.psd', '.ai', '.cdr', '.eps', '.svg', '.raw',
 # 默认转换配置
 DEFAULT_CONVERSION_CONFIG = {
     'source_formats': {'.jpg', '.jpeg', '.png', '.webp', '.bmp', '.avif', '.jxl'},
+    'jxl_fallback_threshold': 20,
     "thread_count": 1,
     'target_format': '.avif',
     'enable_jxl_fallback': True,  # JXL无损回退开关
