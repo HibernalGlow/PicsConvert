@@ -379,9 +379,6 @@ class ImageConverter:
         result['processing_time'] = time.time() - start_time
         
         # 强制进行垃圾回收
-        import gc
-        gc.collect()
-        
         return result
     
     def _convert_with_vips(self, input_path: str, output_path: str, target_ext: str) -> bool:
@@ -494,22 +491,12 @@ class ImageConverter:
             # 强制释放VIPS图像内存
             image = None
             # 强制进行垃圾回收
-            import gc
-            gc.collect()
             
             return True
             
         except Exception as e:
             logger.exception(f"VIPS转换出错: {input_path} -> {output_path}, 错误: {str(e)}")
             return False
-        finally:
-            # 确保在任何情况下都释放内存
-            try:
-                image = None
-                import gc
-                gc.collect()
-            except:
-                pass
     
     def _convert_to_jxl_lossless(self, input_path: str, output_path: str) -> bool:
         """转换为JXL无损格式"""
