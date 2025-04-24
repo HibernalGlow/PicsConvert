@@ -1,0 +1,90 @@
+{
+    "layout": {
+        "status": {
+            "ratio": 1,
+            "title": "🏭 总体进度",
+            "style": "lightblue"
+        },
+        "progress": {
+            "ratio": 1,
+            "title": "🔄 当前进度",
+            "style": "lightgreen"
+        },
+        "performance": {
+            "ratio": 1,
+            "title": "📹 性能监控",
+            "style": "lightyellow"
+        },
+        "image": {
+            "ratio": 2,
+            "title": "🖼️ 图片转换",
+            "style": "lightsalmon"
+        },
+        "archive": {
+            "ratio": 2,
+            "title": "📦 压缩包处理",
+            "style": "lightpink"
+        },
+        "file": {
+            "ratio": 2,
+            "title": "📂 文件操作",
+            "style": "lightcyan"
+        }
+    },
+    "presets": {
+        "AVIF-80-inf": {
+            "description": "AVIF格式 90质量 无限模式",
+            "checkbox_options": ["infinite", "clipboard"],
+            "input_values": {
+                "format": "avif",
+                "quality": "80",
+                "interval": "10"
+            }
+        },
+        "AVIF-skip-jxl": {
+            "description": "AVIF格式 80质量 仅跳过JXL",
+            "checkbox_options": ["clipboard"],
+            "input_values": {
+                "format": "avif",
+                "quality": "80",
+                "skip": ".jxl,.webp",
+                "blacklist": "02COS"
+            }
+        },
+        "jxl-skip-avif": {
+            "description": "JXL格式 70质量 仅跳过AVIF",
+            "checkbox_options": ["clipboard"],
+            "input_values": {
+                "format": "jxl",
+                "quality": "70",
+                "skip": ".avif,.webp",
+                "blacklist": ""
+            }
+        },        
+        "JXL-lossless": {
+            "description": "JXL格式 CJXL无损转换",
+            "checkbox_options": ["clipboard", "lossless","jxlfall"],
+            "input_values": {
+                "format": "jxl",
+                "quality": "100"
+            }
+        },
+        "JXL-70": {
+            "description": "JXL格式 70质量",
+            "checkbox_options": ["clipboard", "jxlfall"],
+            "input_values": {
+                "format": "jxl",
+                "quality": "70"
+            }
+        },
+        "AVIF-80-1800": {
+            "description": "AVIF格式 70质量 1800宽度过滤",
+            "checkbox_options": ["clipboard", "jxlfall"],
+            "input_values": {
+                "format": "avif",
+                "quality": "70",
+                "min_width": "1800"
+            }
+        }
+    }
+}
