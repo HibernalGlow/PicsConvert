@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 import json
 import os
 import portalocker  # 替换fcntl
-import gc  # 导入gc模块
 try:
     from pynput import mouse
 except ImportError:
@@ -634,9 +633,7 @@ class PerformanceContext:
         self._update_params()
         return self
         
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        # 显式触发垃圾回收以释放内存
-        gc.collect()
+
     
     def _update_params(self):
         """更新性能参数"""

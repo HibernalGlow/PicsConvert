@@ -16,7 +16,7 @@ from nodes.record.logger_config import setup_logger
 from src.convert.performance_control import get_performance_params,start_config_gui_thread
 # 导入黑名单文件路径
 from src.convert.compression_tracker import BLACKLIST_FILE_PATH
-from nodes.monitor.monitor_decorator import infinite_monitor
+from src.utils.monitor_decorator import infinite_monitor
 from nodes.tui.preset.textual_preset import create_config_app
 from nodes.tui.textual_logger import TextualLoggerManager
 import zipfile

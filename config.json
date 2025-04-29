@@ -52,11 +52,11 @@
             }
         },
         "jxl-skip-avif": {
-            "description": "JXL格式 70质量 仅跳过AVIF",
+            "description": "JXL格式 75质量 仅跳过AVIF",
             "checkbox_options": ["clipboard"],
             "input_values": {
                 "format": "jxl",
-                "quality": "70",
+                "quality": "75",
                 "skip": ".avif,.webp",
                 "blacklist": ""
             }
@@ -69,12 +69,12 @@
                 "quality": "100"
             }
         },
-        "JXL-70": {
-            "description": "JXL格式 70质量",
+        "JXL-75": {
+            "description": "JXL格式 75质量",
             "checkbox_options": ["clipboard", "jxlfall"],
             "input_values": {
                 "format": "jxl",
-                "quality": "70"
+                "quality": "75"
             }
         },
         "AVIF-80-1800": {
