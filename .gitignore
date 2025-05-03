@@ -173,3 +173,4 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 src/convert/compression_blacklist.json
+/src/convert/performance_config.json

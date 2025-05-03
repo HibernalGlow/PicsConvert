@@ -1,0 +1,38 @@
+[project]
+name = "picsconvert"
+version = "0.1.0"
+description = "图片格式转换工具，支持批量处理压缩包中的图片"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "loguru>=0.7.0",
+    "pillow>=10.0.0",
+    "pyvips>=2.2.1",
+    "textual>=0.40.0",
+    "pathlib>=1.0.1",
+    "typing-extensions>=4.7.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+picsconvert = "main:main"
+
+[tool.setuptools]
+packages = ["src", "nodes"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.0.272",
+    "black>=23.3.0",
+]

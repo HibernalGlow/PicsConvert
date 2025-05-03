@@ -23,17 +23,10 @@ except ImportError:
     VIPS_AVAILABLE = False
     raise ImportError("PyVIPS库未找到，请确保已经安装: pip install pyvips")
 
-from nodes.record.logger_config import setup_logger
-# 导入压缩率跟踪器
+from loguru import logger# 导入压缩率跟踪器
 from src.convert.compression_tracker import compression_tracker
 
-# 获取logger实例
-# config = {
-#     'script_name': 'pics.convert.img_convert',
-#     "console_enabled": False,
-# }
-# logger, _ = setup_logger(config)
-logger = logging.getLogger(__name__)
+
 
 # 支持的格式常量
 SUPPORTED_IMAGE_FORMATS = {'.jpg', '.jpeg', '.png', '.webp', '.bmp', '.avif', '.jxl'}

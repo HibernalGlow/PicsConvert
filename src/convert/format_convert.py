@@ -12,16 +12,9 @@ from datetime import datetime
 
 # 导入我们的img_convert模块
 from src.convert.img_convert import ImageConverter
-from nodes.record.logger_config import setup_logger
+from loguru import logger
 from nodes.pics.filter.archive_image_analyzer import ArchiveImageAnalyzer
 
-# 获取logger实例
-# config = {
-#     'script_name': 'pics.convert.format_convert',
-#     "console_enabled": False,
-# }
-# logger, _ = setup_logger(config)
-logger = logging.getLogger(__name__)
 
 # 支持的格式常量
 SUPPORTED_ARCHIVE_FORMATS = {'.zip', '.cbz', '.cbr'}
