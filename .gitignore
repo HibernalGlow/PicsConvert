@@ -174,3 +174,4 @@ cython_debug/
 .pypirc
 src/convert/compression_blacklist.json
 /src/convert/performance_config.json
+/logs

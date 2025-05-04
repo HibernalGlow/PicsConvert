@@ -10,7 +10,7 @@ from functools import partial # 新增导入
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
-from nodes.file_ops.input_handler import InputHandler
+from src.utils.input_handler import InputHandler
 from src.convert.format_convert import ArchiveConverter,SUPPORTED_ARCHIVE_FORMATS
 from src.convert.performance_control import get_performance_params,start_config_gui_thread
 # 导入黑名单文件路径
@@ -28,12 +28,13 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
-def setup_logger(app_name="app", project_root=None):
+def setup_logger(app_name="app", project_root=None, console_output=True):
     """配置 Loguru 日志系统
     
     Args:
         app_name: 应用名称，用于日志目录
         project_root: 项目根目录，默认为当前文件所在目录
+        console_output: 是否输出到控制台，默认为True
         
     Returns:
         tuple: (logger, config_info)
@@ -47,12 +48,13 @@ def setup_logger(app_name="app", project_root=None):
     # 清除默认处理器
     logger.remove()
     
-    # 添加控制台处理器（简洁版格式）
-    logger.add(
-        sys.stdout,
-        level="INFO",
-        format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <blue>{elapsed}</blue> | <level>{level.icon} {level: <8}</level> | <cyan>{name}:{function}:{line}</cyan> - <level>{message}</level>"
-    )
+    # 有条件地添加控制台处理器（简洁版格式）
+    if console_output:
+        logger.add(
+            sys.stdout,
+            level="INFO",
+            format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <blue>{elapsed}</blue> | <level>{level.icon} {level: <8}</level> | <cyan>{name}:{function}:{line}</cyan> - <level>{message}</level>"
+        )
     
     # 使用 datetime 构建日志路径
     current_time = datetime.now()
@@ -84,7 +86,8 @@ def setup_logger(app_name="app", project_root=None):
     logger.info(f"日志系统已初始化，应用名称: {app_name}")
     return logger, config_info
 
-logger, config_info = setup_logger(app_name="pics_convert")
+
+logger, config_info = setup_logger(app_name="pics_convert", console_output=False)
 
 USE_RICH = False  # 是否使用Rich库进行输出
 

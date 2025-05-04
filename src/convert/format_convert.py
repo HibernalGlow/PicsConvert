@@ -13,7 +13,7 @@ from datetime import datetime
 # 导入我们的img_convert模块
 from src.convert.img_convert import ImageConverter
 from loguru import logger
-from nodes.pics.filter.archive_image_analyzer import ArchiveImageAnalyzer
+from src.utils.archive_image_analyzer import ArchiveImageAnalyzer
 
 
 # 支持的格式常量

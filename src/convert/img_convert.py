@@ -9,12 +9,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, Tuple, List, Set, Union, Optional
 import importlib.util
 import sys
-BASE_DIR = os.getenv('PROJECT_ROOT')
-VIPSHOME_RELATIVE = os.getenv('VIPSHOME_PATH', 'src/packages/vips/bin')
-vipshome = Path(os.path.join(BASE_DIR, VIPSHOME_RELATIVE))
-if hasattr(os, 'add_dll_directory'):
-    os.add_dll_directory(str(vipshome))
-os.environ['PATH'] = str(vipshome) + ';' + os.environ['PATH']
+# vipshome = Path(os.path.join(BASE_DIR, VIPSHOME_RELATIVE))
+# if hasattr(os, 'add_dll_directory'):
+#     os.add_dll_directory(str(vipshome))
+# os.environ['PATH'] = str(vipshome) + ';' + os.environ['PATH']
 # 导入pyvips
 try:
     import pyvips
