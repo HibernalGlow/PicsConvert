@@ -10,12 +10,12 @@ from functools import partial # 新增导入
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
-from src.utils.input_handler import InputHandler
-from src.convert.format_convert import ArchiveConverter,SUPPORTED_ARCHIVE_FORMATS
-from src.convert.performance_control import get_performance_params,start_config_gui_thread
+from picsconvert.utils.input_handler import InputHandler
+from picsconvert.convert.format_convert import ArchiveConverter,SUPPORTED_ARCHIVE_FORMATS
+from picsconvert.convert.performance_control import get_performance_params,start_config_gui_thread
 # 导入黑名单文件路径
-from src.convert.compression_tracker import BLACKLIST_FILE_PATH
-from src.utils.monitor_decorator import infinite_monitor
+from picsconvert.convert.compression_tracker import BLACKLIST_FILE_PATH
+from picsconvert.utils.monitor_decorator import infinite_monitor
 from textual_preset import create_config_app
 from textual_logger import TextualLoggerManager
 import zipfile

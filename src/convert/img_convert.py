@@ -30,7 +30,7 @@ except ImportError:
     raise ImportError("PyVIPS库未找到，请确保已经安装: pip install pyvips")
 
 from loguru import logger# 导入压缩率跟踪器
-from src.convert.compression_tracker import compression_tracker
+from picsconvert.convert.compression_tracker import compression_tracker
 
 
 
