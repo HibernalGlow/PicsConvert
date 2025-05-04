@@ -175,3 +175,5 @@ cython_debug/
 src/convert/compression_blacklist.json
 /src/convert/performance_config.json
 /logs
+/src/tools/libvips
+/src/convert/libvips

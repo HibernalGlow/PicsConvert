@@ -5,14 +5,22 @@ import time
 import subprocess
 from pathlib import Path
 from PIL import Image
+import pillow_avif
+import pillow_jxl
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, Tuple, List, Set, Union, Optional
 import importlib.util
 import sys
-# vipshome = Path(os.path.join(BASE_DIR, VIPSHOME_RELATIVE))
-# if hasattr(os, 'add_dll_directory'):
-#     os.add_dll_directory(str(vipshome))
-# os.environ['PATH'] = str(vipshome) + ';' + os.environ['PATH']
+
+# 自动定位VIPS路径
+# 自动定位VIPS路径
+module_dir = Path(__file__).parent# 获取模块目录
+vipshome = module_dir / "libvips" / "vips-dev-8.16" / "bin"
+
+if hasattr(os, 'add_dll_directory'):
+    os.add_dll_directory(str(vipshome))
+os.environ['PATH'] = str(vipshome) + ';' + os.environ['PATH']
+
 # 导入pyvips
 try:
     import pyvips
