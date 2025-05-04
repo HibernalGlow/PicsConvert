@@ -180,7 +180,14 @@ def process_archive(*args, **kwargs) -> None:
         # 处理暂停逻辑
         if is_paused:
             logger.info(f"[#performance]⏸ 处理已暂停: {archive_path}")
+            last_heartbeat_time = time.time()
             while is_paused:
+                current_time = time.time()
+                # 每30秒输出一次心跳日志
+                if current_time - last_heartbeat_time >= 30.0:
+                    logger.info(f"[#heartbeat]💓 暂停状态心跳 - {archive_path}")
+                    last_heartbeat_time = current_time
+                    
                 time.sleep(0.5)  # 防止过于频繁的检查
                 _, _, is_paused = get_performance_params()
                 # 在暂停状态下继续监控参数变化
