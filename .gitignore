@@ -180,4 +180,4 @@ src/convert/compression_blacklist.json
 /picsconvert/convert/libvips
 /picsconvert/convert/compression_blacklist.json
 /picsconvert/convert/performance_config.json
-/picsconvert/convert/libvips/vips-dev-8.16
+/picsconvert/logs

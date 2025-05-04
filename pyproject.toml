@@ -26,10 +26,10 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project.scripts]
-picsconvert = "main:main"
+picsconvert = "picsconvert.__main__:main"
 
 [tool.setuptools]
-packages = ["src"]
+packages = ["picsconvert"]
 
 [tool.ruff]
 line-length = 100
