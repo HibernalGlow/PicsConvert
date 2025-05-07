@@ -1,7 +1,6 @@
 import os
 from typing import List, Set, Dict, Optional, Tuple
 import pyperclip
-import logging
 from pathlib import Path
 from typing import Tuple, List, Optional, Dict, Any
 from loguru import logger
