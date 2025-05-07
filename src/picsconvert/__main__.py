@@ -9,7 +9,7 @@ import json # 新增导入
 from functools import partial # 新增导入
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(current_dir)
+# sys.path.append(current_dir)
 from .utils.input_handler import InputHandler
 from .convert.format_convert import ArchiveConverter,SUPPORTED_ARCHIVE_FORMATS
 from .convert.performance_control import get_performance_params,start_config_gui_thread
@@ -560,6 +560,7 @@ def main():
             preset_configs=PRESET_CONFIGS, # 使用从 JSON 加载的 PRESET_CONFIGS
             on_run=False,
             rich_mode=USE_RICH,
+            module_name="picsconvert",
             # if no_run else on_run,
         )
         if not USE_RICH:

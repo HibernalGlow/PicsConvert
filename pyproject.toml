@@ -29,6 +29,7 @@ build-backend = "setuptools.build_meta"
 picsconvert = "picsconvert.__main__:main"
 
 [tool.setuptools]
+package-dir = {"" = "src"}  # 告诉 setuptools 包位于 src 目录
 packages = ["picsconvert"]
 
 [tool.ruff]

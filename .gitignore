@@ -181,3 +181,6 @@ src/convert/compression_blacklist.json
 /picsconvert/convert/compression_blacklist.json
 /picsconvert/convert/performance_config.json
 /picsconvert/logs
+/src/picsconvert/convert/libvips
+/src/picsconvert/convert/compression_blacklist.json
+/src/picsconvert/convert/performance_config.json
