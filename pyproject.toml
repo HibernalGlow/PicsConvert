@@ -1,6 +1,6 @@
 [project]
 name = "picsconvert"
-version = "0.1.0"
+version = "0.1.9"
 description = "图片格式转换工具，支持批量处理压缩包中的图片"
 readme = "README.md"
 requires-python = ">=3.11"
