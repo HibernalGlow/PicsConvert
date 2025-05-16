@@ -175,6 +175,11 @@ def process_archive(*args, **kwargs) -> None:
     archive_path = args[0] if args else kwargs.get('archive_path')
     filter_params = kwargs.get('filter_params', {})
     
+    # 确保archive_path不为None
+    if archive_path is None:
+        logger.error("[#archive]未提供有效的压缩包路径")
+        return
+    
     # 检查文件格式
     file_ext = Path(archive_path).suffix.lower()
     if file_ext not in SUPPORTED_ARCHIVE_FORMATS:

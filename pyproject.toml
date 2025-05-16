@@ -27,10 +27,13 @@ build-backend = "setuptools.build_meta"
 
 [project.scripts]
 picsconvert = "picsconvert.__main__:main"
+picsc = "picsconvert.__main__:main"
+ebookconvert = "ebookconvert.__main__:main"
+ebookc = "ebookconvert.__main__:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}  # 告诉 setuptools 包位于 src 目录
-packages = ["picsconvert"]
+packages = ["picsconvert", "ebookconvert"]
 
 [tool.ruff]
 line-length = 100
